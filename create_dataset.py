@@ -45,17 +45,9 @@ for item in noiselist_1:
     file.write(item + '\n')
 file.close()
 
-# file = open('/home/ps/tmp/pycharm_project_773/TCFL-OCT-main/code/train_noisy_2.txt', 'w')
-# for item in noiselist_2:
-#     file.write(item + '\n')
-# file.close()
+
 
 file = open('/home/ps/zhencunjiang/sna-skan/code/all_train_clean.txt', 'w')
 for item in cleanlist:
     file.write(item + '\n')
 file.close()
-#
-# file = open('/home/ps/tmp/pycharm_project_773/TCFL-OCT-main/code/test_noisy.txt', 'w')
-# for item in testlist:
-#     file.write(item + '\n')
-# file.close()
