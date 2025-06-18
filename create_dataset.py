@@ -14,12 +14,12 @@ def get_dcm_files(input_path):
     return dcm_list
 
 
-noisedatapath='/home/ps/zhencunjiang/sna-skan/PKU37_OCT_Denoising/PKU37_OCT_Denoising/noisy'
+noisedatapath='/sna-skan/PKU37_OCT_Denoising/PKU37_OCT_Denoising/noisy'
 
 noiselist=get_dcm_files(noisedatapath)
 print(len(noiselist))
 
-cleandatapath='/home/ps/zhencunjiang/sna-skan/PKU37_OCT_Denoising/PKU37_OCT_Denoising/clean'
+cleandatapath='/sna-skan/PKU37_OCT_Denoising/PKU37_OCT_Denoising/clean'
 clean=get_dcm_files(cleandatapath)
 
 print(len(clean))
@@ -40,7 +40,7 @@ for i in range(60):
 cleanlist=cleanlist[0:1734]
 print(len(cleanlist))
 
-file = open('/home/ps/zhencunjiang/sna-skan/code/all_train_noisy.txt', 'w')
+file = open('/sna-skan/code/all_train_noisy.txt', 'w')
 for item in noiselist_1:
     file.write(item + '\n')
 file.close()
