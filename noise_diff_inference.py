@@ -12,7 +12,6 @@ import cv2
 from DataLoader_duke17 import *
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--epoch", type=int, default=20, help="the name of the trained model")
 parser.add_argument("--batch_size", type=int, default=1, help="size of the batches")
 parser.add_argument("--threads", type=int, default=0, help="number of cpu threads to use during batch generation")
 opt = parser.parse_args()
@@ -29,7 +28,7 @@ if cuda:
 
 print('===> Loading datasets')
 
-val_dataloader = octDataset('/home/ps/zhencunjiang/sna-skan/duke17.csv')
+val_dataloader = octDataset('duke17.csv')
 validation_data_loader = DataLoader(dataset=val_dataloader, num_workers=opt.threads, batch_size=opt.batch_size,
                                     shuffle=False)
 
@@ -38,8 +37,9 @@ Tensor = torch.cuda.FloatTensor if cuda else torch.FloatTensor
 
 
 def inference():
-    generator.load_state_dict(torch.load(r"/home/ps/zhencunjiang/sna-skan/saved_models_all_kan/generator_%d.pth" % opt.epoch, map_location='cpu'))
-
+    generator.load_state_dict(torch.load(r"generator.pth", map_location='cpu'))
+    root_result_test = r"sna-skan/saved_models_all_kan_duke17"
+    os.makedirs(root_result_test,exist_ok=True)
     index = 0
 
     for i, batch in enumerate(validation_data_loader):
@@ -64,15 +64,9 @@ def inference():
             print(imgout_test.shape)
             print(cimg.shape)
 
-
-
-
-
-
         imgout_test = imgout_test * 255.0
         clean=cimg*255
-        root_result_test = r"/home/ps/zhencunjiang/sna-skan/saved_models_all_kan_duke17"
-        os.makedirs(root_result_test,exist_ok=True)
+
         print(imgout_test)
         # cv2.imshow(np.array(imgout_test))
         filename_result_test = str(index) + '_noise_diff.png'
