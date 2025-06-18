@@ -215,7 +215,7 @@ def train(epoch):
             )
         )
 
-    torch.save(generator.state_dict(), r"/home/ps/zhencunjiang/sna-skan/saved_models_all_kan/generator_%d.pth" % (epoch))
+    torch.save(generator.state_dict(), r"/sna-skan/saved_models_all_kan/generator_%d.pth" % (epoch))
 
 os.makedirs('/home/ps/zhencunjiang/sna-skan/saved_models_all_kan',exist_ok=True)
 
@@ -224,6 +224,6 @@ for epoch in range(opt.epoch, opt.n_epochs):
 
 # Save the final model checkpoints
 torch.save(generator.state_dict(),
-           r"/home/ps/zhencunjiang/sna-skan/saved_models_all_kan/generator_%d.pth" % epoch)
+           r"/sna-skan/saved_models_all_kan/generator_%d.pth" % epoch)
 torch.save(discriminator.state_dict(),
-           r"/home/ps/zhencunjiang/sna-skan/saved_models_all_kan/discriminator_%d.pth" % epoch)
+           r"/sna-skan/saved_models_all_kan/discriminator_%d.pth" % epoch)
