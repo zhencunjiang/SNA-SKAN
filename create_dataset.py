@@ -47,7 +47,7 @@ file.close()
 
 
 
-file = open('/home/ps/zhencunjiang/sna-skan/code/all_train_clean.txt', 'w')
+file = open('/sna-skan/code/all_train_clean.txt', 'w')
 for item in cleanlist:
     file.write(item + '\n')
 file.close()
